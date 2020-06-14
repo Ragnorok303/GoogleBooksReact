@@ -19,7 +19,17 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "express": "^4.16.3",
+    "axios": "^0.19.2",
+    "animate.css": "^3.7.2",
+    "cd": "^0.3.3",
+    "express": "^4.17.1",
+    "mern": "file:client",
+    "mongoose": "^5.7.7",
+    "react-scripts": "^3.2.0",
+    "script": "^0.1.4",
+    "sequelize": "^5.21.2",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.18.4",
     "if-env": "^1.0.4"
   }
 }
