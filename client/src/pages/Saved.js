@@ -3,13 +3,14 @@ import NavBar from "../components/NavBar";
 import API from "../utils/api/api";
 import Cards from "../components/Cards";
 
+
 class Saved extends Component {
     state = {
         results: []
     }
 
     componentDidMount() {
-        API.getBooks()
+        API.getBooks(this.props.match.params.id)
             .then(res => {
                 this.setState({ results: res.data });
                 console.log('results:', this.state.results)
