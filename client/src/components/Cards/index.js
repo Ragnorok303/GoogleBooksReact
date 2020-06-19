@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button";
 
+
 function Cards({ title, link, id, author, image, description, saveBook, deleteBook }) {
     if (!saveBook) {
         return (
@@ -61,7 +62,7 @@ function Cards({ title, link, id, author, image, description, saveBook, deleteBo
                             </Button>
                             <Button
                                 id={id}
-                                onClick={(event) => saveBook(event)}
+                                onClick={saveBook}
                             >Save Book
                             </Button>
                         </span>

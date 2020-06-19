@@ -6,19 +6,14 @@ import Cards from "../components/Cards";
 
 class Saved extends Component {
     state = {
-        results: []
+        books: []
     }
 
     componentDidMount() {
-        API.getBooks(this.props.match.params.id)
-            .then(res => {
-                this.setState({ results: res.data });
-                console.log('results:', this.state.results)
-            })
-            .catch(err => {
-                throw err
-            })
-    }
+        API.getBook(this.props.match.params.id)
+          .then(res => this.setState({ books: res.data }))
+          .catch(err => console.log(err));
+      }
 
     handleDeleteBook = event => {
         event.preventDefault();
@@ -27,7 +22,7 @@ class Saved extends Component {
 
         const newState = { ...this.state }
 
-        newState.results = this.state.results.filter(book => book._id !== bookID)
+        newState.books = this.state.books.filter(book => book._id !== bookID)
 
         API.deleteBook(bookID).then(
             (response) => {
@@ -48,14 +43,14 @@ class Saved extends Component {
                 <div className='container'>
                     <h3 style={{ color: 'white' }} >Your Saved Books</h3>
                     <div className='container-fluid' id='main-content'>
-                        {this.state.results.map((book) => {
+                        {this.state.books.map((book) => {
                             return (
                                 <Cards
                                     key={book._id}
                                     title={book.title}
                                     id={book._id}
                                     link={book.link}
-                                    author={book.authors}
+                                    author={book.author}
                                     image={book.image}
                                     description={book.description}
                                     deleteBook={this.handleDeleteBook}

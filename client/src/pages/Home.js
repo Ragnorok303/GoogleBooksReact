@@ -53,7 +53,7 @@ class Home extends Component {
 
         const newBook = {
             title: targetBook[0].volumeInfo.title,
-            authors: targetBook[0].volumeInfo.authors,
+            author: JSON.stringify(targetBook[0].volumeInfo.authors),
             description: targetBook[0].volumeInfo.description,
             image: targetBook[0].volumeInfo.imageLinks.thumbnail,
             link: targetBook[0].volumeInfo.infoLink
@@ -72,7 +72,7 @@ class Home extends Component {
 
             API.saveBook({
                 title: targetBook[0].volumeInfo.title,
-                authors: targetBook[0].volumeInfo.authors,
+                author: JSON.stringify(targetBook[0].volumeInfo.authors),
                 description: targetBook[0].volumeInfo.description,
                 image: targetBook[0].volumeInfo.imageLinks.thumbnail,
                 link: targetBook[0].volumeInfo.infoLink
