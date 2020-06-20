@@ -6,25 +6,26 @@ function Cards({ title, link, id, author, image, description, saveBook, deleteBo
     // return <p>{title} x {author}</p>;
     if (!saveBook) {
         return (
-            <div className="container" style={{ backgroundColor: 'lightgrey' }}>
-                <div id='result-card'>
+            <div className="container" style={{ backgroundColor: 'lightgrey', borderRadius: 20, opacity: '3' }}>
+
+                <div id='result-card' style={{ opacity: 0.7 }} >
+
                     <div className='row text-center' id='result-header'>
-                        <div className='col-3'>
+                        <br />    <div className='col-3'>
                             <h4>{title}</h4>
                             <small>
-                                <br />Author:
-                        <br />{JSON.parse(author).join(', ')}</small>
+                                <br />{JSON.parse(author).join(', ')}</small>
                         </div>
                         <span className='col-3 offset-6'>
                             <Button
                                 href={link}
-                            >View
-                        </Button>
+                            >View Book
+                            </Button>
                             <Button
                                 id={id}
                                 onClick={deleteBook}
                             >Delete
-                        </Button>
+                            </Button>
                         </span>
                     </div>
                     <div className='row'>
@@ -33,10 +34,14 @@ function Cards({ title, link, id, author, image, description, saveBook, deleteBo
                     <div className='row'>
                         <div className='col-3 text-center'>
                             <img src={image} alt={title} />
+                            <br />
+                            <br />
                         </div>
                         <div className='col-9'>
                             <p className='lead'>Summary: </p>
                             {description}
+                            <br />
+                            <br />
                         </div>
                     </div>
                 </div>
