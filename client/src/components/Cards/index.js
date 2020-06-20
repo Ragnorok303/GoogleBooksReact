@@ -6,12 +6,13 @@ function Cards({ title, link, id, author, image, description, saveBook, deleteBo
     // return <p>{title} x {author}</p>;
     if (!saveBook) {
         return (
-            <div className="container" style={{ backgroundColor: 'lightgrey', borderRadius: 20, opacity: '3' }}>
-
+            <div className="container" style={{ backgroundColor: 'lightgrey', borderRadius: 40, opacity: '3' }}>
+                <br />
+                <br />
                 <div id='result-card' style={{ opacity: 0.7 }} >
 
                     <div className='row text-center' id='result-header'>
-                        <br />    <div className='col-3'>
+                        <br />   <div className='col-3'>
                             <h4>{title}</h4>
                             <small>
                                 <br />{JSON.parse(author).join(', ')}</small>
