@@ -5,41 +5,66 @@ import Cards from "../components/Cards";
 
 class Saved extends Component {
     state = {
-        books: [],
-        results: [],
-        title: ""
+        results: []
     }
 
     componentDidMount() {
         API.getBooks()
             .then(res => {
-                console.log('Data saved:', res.data)
-                this.setState({ books: res.data });
+                this.setState({ results: res.data });
+                console.log('results:', this.state.results)
             })
             .catch(err => {
                 throw err
             })
     }
 
+    handleDeleteBook = event => {
+        event.preventDefault();
+
+        const bookID = event.target.getAttribute('data-id')
+
+        const newState = { ...this.state }
+
+        newState.results = this.state.results.filter(book => book._id !== bookID)
+
+        API.deleteBook(bookID).then(
+            (response) => {
+                this.setState(newState)
+                console.log(response);
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+            }
+        );
+    }
+
     render() {
-        console.log(this.state)
         return (
             <div>
                 <NavBar />
-                <div className='container'>
-                    <h3>Your Saved Books</h3>
+                <div className='container' style={{ textAlign: 'center' }}>
+                    <u style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}>Your Saved Books:</u>
                     <div className='container-fluid' id='main-content'>
-                        {this.state.books.map(books => (
-                            <Cards key={books._id}>
-                                title={books.title}
-                                id={books._id}
-                                link={books.link}
-                                author={books.author}
-                                image={books.image}
-                                description={books.description}
-                                deleteBook={this.deleteBook}
-                            </Cards>
-                        ))}
+                        {this.state.results.map((book) => {
+                            return (
+                                <div>
+                                    <br />
+                                    <br />
+                                    <Cards
+                                        key={book._id}
+                                        title={book.title}
+                                        id={book._id}
+                                        link={book.link}
+                                        author={book.author}
+                                        image={book.image}
+                                        description={book.description}
+                                        deleteBook={this.handleDeleteBook}
+                                    />
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
