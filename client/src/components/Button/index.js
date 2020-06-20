@@ -8,7 +8,8 @@ function Button(props) {
             </button>
         )
     }
-    else if (props.onClick) {
+    // else if (props.onClick) {
+    else {
         return (
             <button
                 className='btn btn-primary btn-lg btn-block'

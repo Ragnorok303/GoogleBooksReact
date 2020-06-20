@@ -2,20 +2,21 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
+    console.log(req.body)
     db.Book
-      .find(req.query)
+      .find()
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
+    console.log(req.body)
     db.Book
-      .findById(req.params.id)
+      .findById(req.params._id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body)
     db.Book
       .create(req.body)
       .then(dbModel => res.json(dbModel))
