@@ -31,10 +31,10 @@ class Saved extends Component {
                     <div className='container-fluid' id='main-content'>
                         {this.state.books.map(books => (
                             <Cards key={books._id}>
-                                title={books.books.title}
+                                title={books.title}
                                 id={books._id}
                                 link={books.link}
-                                author={books.books.author}
+                                author={books.author}
                                 image={books.image}
                                 description={books.description}
                                 deleteBook={this.deleteBook}
